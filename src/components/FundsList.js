@@ -36,7 +36,7 @@ class FundsList extends React.Component{
         }).slice((this.props.page-1)*100,(this.props.page-1)*100+100).map(fund => {
             return (
                 <tr key={fund.code}>
-                    <Link to={`/explore/${fund.code}`} onClick={(event)=>{event.stopPropagation()}}><td>{fund.name}</td></Link>
+                    <td><Link to={`/explore/${fund.code}`} onClick={(event)=>{event.stopPropagation()}}>{fund.name}</Link></td>
                     <td className={fund.fund_category?"":"error"}>{fund.fund_category?fund.fund_category:this.renderAttentionIcon()}</td>
                     <td className={fund.fund_type?"":"error"}>{fund.fund_type?fund.fund_type:this.renderAttentionIcon()}</td>
                     <td className={fund.plan?"":"error"}>{fund.plan?fund.plan:this.renderAttentionIcon()}</td>
@@ -63,7 +63,7 @@ class FundsList extends React.Component{
                 }
             }).length/100)}/>
                 <select className="ui dropdown" onChange={({target})=>{this.props.UpdateSearchField(target.value)}}>
-                    <option value="name" selected={true}>Name</option>
+                    <option value="name" defaultValue={true}>Name</option>
                     <option value="fund_category">Fund Category</option>
                     <option value="fund_type">Fund Type</option>
                     <option value="plan">Plan</option>
