@@ -57,7 +57,15 @@ class FundsList extends React.Component{
     render = () => {
         return(
             <div>
-            <Pagination activePage={Number.isInteger(this.props.page)?this.props.page:1} onPageChange={this.handlePaginationChange} totalPages={parseInt(this.props.funds.length/100)}/>
+            <Pagination activePage={Number.isInteger(this.props.page)?this.props.page:1} onPageChange={this.handlePaginationChange} totalPages={parseInt(this.props.funds.filter((fund) => {
+                let SEARCHFIELD = typeof(this.props.searchField)=="string"? this.props.searchField: "name";
+                if(!this.props.searchTerm || typeof (this.props.searchTerm) != "string")
+                    return true;
+                else
+                {   let FieldValue = typeof(fund[SEARCHFIELD])=="string"?fund[SEARCHFIELD].toLowerCase():"";
+                    return FieldValue.indexOf(this.props.searchTerm.toLowerCase())>-1;
+                }
+            }).length/100)}/>
                 <select className="ui dropdown" onChange={({target})=>{this.props.UpdateSearchField(target.value)}}>
                     <option value="name" selected={true}>Name</option>
                     <option value="fund_category">Fund Category</option>
