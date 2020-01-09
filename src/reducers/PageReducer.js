@@ -4,6 +4,8 @@ export default (state={}, action) => {
             return 1;
         case "CHANGE_PAGE":
             return action.payload;
+        case "SEARCH":
+            return 1;
         default:
             return state;
     }

@@ -23,11 +23,11 @@ export default (state={}, action) => {
                 });
             else
                 NewFunds.sort(((a,b) => {
-                    let bandA=a.returns!=undefined?a.returns["year_"+field]:1000;
-                    let bandB=b.returns!=undefined?b.returns["year_"+field]:1000;
+                    let bandA=a.returns!==undefined?a.returns["year_"+field]:1000;
+                    let bandB=b.returns!==undefined?b.returns["year_"+field]:1000;
 
-                    bandA=bandA!=undefined?bandA:1000;
-                    bandB=bandB!=undefined?bandB:1000;
+                    bandA=bandA!==undefined?bandA:1000;
+                    bandB=bandB!==undefined?bandB:1000;
                     let comparison = 0;
                     if (bandA > bandB) {
                         comparison = 1;

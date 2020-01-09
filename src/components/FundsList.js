@@ -1,18 +1,14 @@
 import React from 'react';
 import {fetchFunds, changePage, SortFunds, Search, UpdateSearchField} from "../actions";
 import {connect} from 'react-redux';
-import Spinner from "./Spinner";
-import _ from 'lodash';
 import { Link } from "react-router-dom";
 import {Pagination} from "semantic-ui-react";
-import searchReducer from "../reducers/searchReducer";
-import searchFieldReducer from "../reducers/searchFieldReducer";
 
 class FundsList extends React.Component{
 
     SortBy = (field) => {
         let order=1;
-        if(this.props.currentlySortedField.field==field)
+        if(this.props.currentlySortedField.field===field)
             order=-1*this.props.currentlySortedField.order;
 
         this.props.SortFunds(field, order);

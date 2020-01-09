@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 class FundDetails extends React.Component{
 
     componentDidMount() {
-        let code=this.props.fetchFund(this.props.match.params.code);
+        this.props.fetchFund(this.props.match.params.code);
     }
 
     render() {
